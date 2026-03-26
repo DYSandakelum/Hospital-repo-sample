@@ -11,5 +11,9 @@ public interface AppointmentService {
 
     List<Appointment> findAll();
 
+    Appointment findById(Long appointmentId);
+
+    void updateById(Long appointmentId, AppointmentRequest request);
+
 
 }

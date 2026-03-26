@@ -33,4 +33,14 @@ public class AppointmentServiceImpl implements AppointmentService {
     public List<Appointment> findAll() {
         return appointmentRepository.findAllAppointment();
     }
+
+    @Override
+    public Appointment findById(Long appointmentId) {
+        return appointmentRepository.findById(appointmentId);
+    }
+
+    @Override
+    public void updateById(Long appointmentId, AppointmentRequest request) {
+        appointmentRepository.updateById(appointmentId, request);
+    }
 }
