@@ -13,4 +13,6 @@ public interface DoctorService {
 
     Doctor getById(Long DoctorId);
 
+    Doctor updateById(Long DoctorId , DoctorRequest doctorRequest);
+
 }

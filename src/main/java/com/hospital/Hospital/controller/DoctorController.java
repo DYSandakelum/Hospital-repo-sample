@@ -53,5 +53,19 @@ public class DoctorController {
 
     }
 
+    @PutMapping("/doctors/{doctor-id}")
+    public DoctorResponse updateById (@PathVariable("doctor-id") Long doctorId , @RequestBody DoctorRequest doctorRequest){
+        Doctor doctor = doctorService.updateById(doctorId,doctorRequest);
+        DoctorResponse response = new DoctorResponse();
 
+        response.setDoctorId(doctor.getDoctorId());
+        response.setName(doctor.getName());
+
+        return response;
+
+    }
+
+    
 }
+
+

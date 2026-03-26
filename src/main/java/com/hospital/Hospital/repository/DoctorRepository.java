@@ -30,7 +30,7 @@ public class DoctorRepository {
         return null;
     }
 
-    public Doctor updateDriver(Long driverId, DoctorRequest request) {
+    public Doctor updateDoctor(Long driverId, DoctorRequest request) {
         for (Doctor doctor : doctorList) {
 
             if (doctor.getDoctorId().equals(driverId)) {
