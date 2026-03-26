@@ -5,10 +5,7 @@ import com.hospital.Hospital.controller.response.AppointmentResponse;
 import com.hospital.Hospital.model.Appointment;
 import com.hospital.Hospital.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +42,28 @@ public class AppointmentController {
         }
 
         return appointmentResponseList;
+
+    }
+
+    @GetMapping("/appointments/{appointment-id}")
+    public AppointmentResponse getById(@PathVariable("appointment-id") Long appointmentId ){
+
+        Appointment appointment = appointmentService.findById(appointmentId);
+
+        AppointmentResponse appointmentResponse = new AppointmentResponse();
+
+        appointmentResponse.setId(appointment.getId());
+        appointmentResponse.setDate(appointment.getDate());
+        appointmentResponse.setDoctorName(appointment.getDoctorName());
+        appointmentResponse.setPatientName(appointment.getPatientName());
+
+        return appointmentResponse;
+    }
+
+    @PutMapping("/appointments/{appointment-id}")
+    public void updateById(@PathVariable("appointment-id") Long appointmentId, @RequestBody AppointmentRequest request){
+
+        appointmentService.updateById(appointmentId, request);
 
     }
 
